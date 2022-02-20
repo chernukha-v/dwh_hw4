@@ -30,6 +30,7 @@ models:
       tags:
         - 'stage'
       materialized: view
+
     raw_vault:
       tags:
         - 'raw_vault'
@@ -44,3 +45,7 @@ models:
         tags:
           - 'satellite'
 
+    business_vault:
+      tags:
+        - 'business_vault'
+      materialized: table
