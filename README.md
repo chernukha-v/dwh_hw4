@@ -1,32 +1,12 @@
-## Environment setup
+## Домашнее задание по теме Data Vault
 
-Either use `pipenv` for Virtual Environment or Docker container
-
-### Python virtual enironment
-
-Sync dependencies of specific versions and open subshell:
-
-```bash
-pipenv sync
-pipenv shell
-
-dbt --version
-dbt debug
-```
-
-### Docker
-
-1. Launch containers with dbt and postgres
-2. Enter dbt container for interactive session
-
-```bash
-docker-compose up -d
-docker-compose exec dbt bash
-
-dbt --version
-dbt debug
-```
-
-Or simply attach shell in VS Code:
-
-![](https://habrastorage.org/webt/rc/v9/-k/rcv9-ktw8dlyfyh_rklhigeqgse.png)
+Что сделано:
+- Postgres развернул из Докера (версия из Я.Облака несовместима с DBT 0.19 по причине отсутствия возможности использовать SSL, а Яндекс с публичными IP без него не работает)
+- Подтянул данные из папки `data` с помощью команды `dbt seed`
+- Запустил модель `stage`
+- Запустил модель `raw_vault`
+- Внес изменения в `source_customers.csv`: добавил новые записи, изменил атрибуты в старых
+- Перезапустил `dbt seed`, `raw_vault`
+- Создал модель `business_vault`, основная цель которой -- получить описанные в пп. 1 и 2 домашнего задания таблицы
+- Запустил модель `business_vault`
+- Удостоверился через DBeaver, что все данные подъехали
